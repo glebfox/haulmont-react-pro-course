@@ -1,0 +1,27 @@
+/* Core */
+@import 'sanitize.css';
+
+/* Instruments */
+@import './css-vars.scss';
+@import './reset.scss';
+
+/* Components Styles */
+@import './styles/nav.scss';
+@import './styles/layout.scss';
+@import './styles/hero.scss';
+@import './styles/tip-list.scss';
+@import './styles/paper.scss';
+@import './styles/publish-tip.scss';
+
+:root {
+    min-height: 100vh;
+    background-color: var(--color-3);
+
+    & body {
+        min-height: 100vh;
+        margin: 0;
+        font-family: roboto, system-ui;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}

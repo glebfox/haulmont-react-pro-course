@@ -1,0 +1,114 @@
+[
+    {
+        "id": "55634253-cfc5-40cd-abc2-73d27c704d33",
+        "rain_probability": 4,
+        "humidity": 48,
+        "day": 1617426000000,
+        "temperature": 22,
+        "type": "cloudy"
+    },
+    {
+        "id": "4dae011c-55ab-4022-96e6-2918d43a7ed1",
+        "rain_probability": 13,
+        "humidity": 42,
+        "day": 1617512400000,
+        "temperature": 28,
+        "type": "rainy"
+    },
+    {
+        "id": "11f0f232-69b3-4c44-a616-dffa05d06c70",
+        "rain_probability": 26,
+        "humidity": 60,
+        "day": 1617598800000,
+        "temperature": 23,
+        "type": "cloudy"
+    },
+    {
+        "id": "41d6241c-3141-43fc-a158-5733ff4eed2d",
+        "rain_probability": 77,
+        "humidity": 64,
+        "day": 1617685200000,
+        "temperature": 17,
+        "type": "rainy"
+    },
+    {
+        "id": "a501ff94-4521-4b29-9352-858d728fcb0b",
+        "rain_probability": 27,
+        "humidity": 58,
+        "day": 1617771600000,
+        "temperature": 30,
+        "type": "sunny"
+    },
+    {
+        "id": "38e72e53-0230-4fb0-933e-a802d7eb6044",
+        "rain_probability": 10,
+        "humidity": 50,
+        "day": 1617858000000,
+        "temperature": 25,
+        "type": "rainy"
+    },
+    {
+        "id": "36214cd8-67ef-4137-a869-2b827c037e4d",
+        "rain_probability": 94,
+        "humidity": 85,
+        "day": 1617944400000,
+        "temperature": 23,
+        "type": "sunny"
+    },
+    {
+        "id": "780a5c94-5500-4da1-b974-66254fde7e78",
+        "rain_probability": 45,
+        "humidity": 45,
+        "day": 1618030800000,
+        "temperature": 20,
+        "type": "sunny"
+    },
+    {
+        "id": "8c5bf637-4199-480f-9ca1-3d4569dc38b1",
+        "rain_probability": 42,
+        "humidity": 54,
+        "day": 1618117200000,
+        "temperature": 23,
+        "type": "sunny"
+    },
+    {
+        "id": "bf59a45d-a2ff-419d-b997-a8f9129b2d02",
+        "rain_probability": 71,
+        "humidity": 78,
+        "day": 1618203600000,
+        "temperature": 20,
+        "type": "sunny"
+    },
+    {
+        "id": "e42e5bfc-a50b-4864-8d8a-6653bc652f29",
+        "rain_probability": 21,
+        "humidity": 53,
+        "day": 1618290000000,
+        "temperature": 24,
+        "type": "cloudy"
+    },
+    {
+        "id": "17758f77-b48c-4f91-af9a-fb6fa3c1dfd7",
+        "rain_probability": 9,
+        "humidity": 54,
+        "day": 1618376400000,
+        "temperature": 25,
+        "type": "rainy"
+    },
+    {
+        "id": "5a324354-3b23-4ab6-a414-c8443d0b6972",
+        "rain_probability": 88,
+        "humidity": 74,
+        "day": 1618462800000,
+        "temperature": 25,
+        "type": "rainy"
+    },
+    {
+        "id": "b4a613ec-833a-499d-b727-ce0ea1352ab5",
+        "rain_probability": 28,
+        "humidity": 45,
+        "day": 1618549200000,
+        "temperature": 20,
+        "type": "rainy"
+    }
+]

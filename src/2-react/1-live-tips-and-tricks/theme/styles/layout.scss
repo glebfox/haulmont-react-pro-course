@@ -1,0 +1,11 @@
+.layout {
+    --side-space: 70px;
+
+    display: grid;
+    grid-template-areas:
+    "menu hero"
+    "menu content";
+    grid-template-columns: var(--nav-width) calc(100vw - var(--nav-width));
+    justify-items: center;
+    padding-top: 20px;
+}

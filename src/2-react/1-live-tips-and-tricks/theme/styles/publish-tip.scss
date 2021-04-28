@@ -1,0 +1,9 @@
+.publish-tip {
+    grid-area: hero;
+
+    & fieldset {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+}
