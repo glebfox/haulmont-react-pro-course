@@ -10,10 +10,15 @@ export const Hero = () => {
             </div>
 
             <div className='tags'>
-                <span>
-                    <icons.React /> React
-                </span>
+                {Object.entries(icons).map(([name, icon]) => {
+                    const Icon = icon;
+                    return (
+                        <span>
+                            <Icon /> {name}
+                        </span>
+                    );
+                })}
             </div>
         </section>
-    )
+    );
 };

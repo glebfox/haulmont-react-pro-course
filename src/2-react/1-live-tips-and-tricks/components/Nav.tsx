@@ -11,6 +11,21 @@ export const Nav = () => {
             <a>
                 <icons.Tag /> По тэгам
             </a>
+            <a>
+                <icons.Publish /> Опубликовать
+            </a>
+            <a>
+                <icons.Settings /> Настройки
+            </a>
+            <a>
+                <icons.Login /> Войти
+            </a>
+            <a>
+                <icons.Profile /> Профиль
+            </a>
+            <a>
+                <icons.Logout /> Выйти
+            </a>
         </nav>
     )
 }
