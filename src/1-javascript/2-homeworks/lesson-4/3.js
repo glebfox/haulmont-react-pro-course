@@ -13,7 +13,7 @@
 // РЕШЕНИЕ
 
 function isEven(value) {
-    if (!(typeof value === 'number')) {
+    if (typeof value !== 'number') {
         throw new TypeError('passed parameter is not a number');
     }
 

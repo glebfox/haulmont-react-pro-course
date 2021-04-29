@@ -17,8 +17,8 @@ const isCustomerVerified = user => {
     console.log(user);
 
     return user.verified
-      ? Promise.resolve("Пользователь верифицирован")
-      : Promise.reject("Пользователь не верифицирован");
+        ? Promise.resolve('Пользователь верифицирован')
+        : Promise.reject('Пользователь не верифицирован');
 };
 // РЕШЕНИЕ
 

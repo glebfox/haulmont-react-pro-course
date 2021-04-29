@@ -12,8 +12,8 @@
 
 function f (...values) {
     let sum = 0;
-    for (value of values) {
-        if (!(typeof value === 'number')) {
+    for (let value of values) {
+        if (typeof value !== 'number') {
             throw new TypeError(`'${value}' with type '${typeof value}' is not a number`);
         }
 

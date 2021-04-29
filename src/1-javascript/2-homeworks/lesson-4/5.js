@@ -33,11 +33,11 @@ function createLogger() {
 
     return {
         call: (func, ...params) => {
-            if (!(typeof func === 'function')) {
+            if (typeof func !== 'function') {
                 throw new TypeError('passed parameter is not a function');
             }
 
-            const result = func.apply(this, params);
+            const result = func(...params);
             callHistory = [...callHistory, {
                 name: func.name,
                 in: params,

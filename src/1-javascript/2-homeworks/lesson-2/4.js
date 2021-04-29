@@ -24,7 +24,7 @@ function filter(array, predicate) {
         throw new TypeError('passed parameter is not an array');
     }
 
-    if (!(typeof predicate === 'function')) {
+    if (typeof predicate !== 'function') {
         throw new TypeError('passed parameter is not a function');
     }
 
