@@ -1,4 +1,4 @@
-import { icons } from '../theme/icons/tag';
+import { icons } from '../../theme/icons/tag';
 
 export const Tip = () => {
     return (

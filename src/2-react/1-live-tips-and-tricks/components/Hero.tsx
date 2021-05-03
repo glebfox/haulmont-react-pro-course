@@ -10,10 +10,10 @@ export const Hero = () => {
             </div>
 
             <div className='tags'>
-                {Object.entries(icons).map(([name, icon]) => {
+                {Object.entries(icons).map(([name, icon], index) => {
                     const Icon = icon;
                     return (
-                        <span>
+                        <span key={index}>
                             <Icon /> {name}
                         </span>
                     );
