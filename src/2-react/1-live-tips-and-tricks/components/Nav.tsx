@@ -1,3 +1,6 @@
+/* Core */
+import { NavLink } from 'react-router-dom';
+
 /* Icons */
 import { icons } from '../theme/icons/nav';
 
@@ -5,27 +8,27 @@ export const Nav = () => {
     return (
         <nav className='nav'>
             <h1>Т и Т</h1>
-            <a href='#'>
+            <NavLink to='/all-topics'>
                 <icons.Home /> Все темы
-            </a>
-            <a>
+            </NavLink>
+            <NavLink to='/topics-by-tag'>
                 <icons.Tag /> По тэгам
-            </a>
-            <a>
+            </NavLink>
+            <NavLink to='/'>
                 <icons.Publish /> Опубликовать
-            </a>
-            <a>
+            </NavLink>
+            <NavLink to='/'>
                 <icons.Settings /> Настройки
-            </a>
-            <a>
+            </NavLink>
+            <NavLink to='/'>
                 <icons.Login /> Войти
-            </a>
-            <a>
+            </NavLink>
+            <NavLink to='/'>
                 <icons.Profile /> Профиль
-            </a>
-            <a>
+            </NavLink>
+            <NavLink to='/'>
                 <icons.Logout /> Выйти
-            </a>
+            </NavLink>
         </nav>
-    )
+    );
 }

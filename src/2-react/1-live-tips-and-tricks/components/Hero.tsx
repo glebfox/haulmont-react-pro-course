@@ -1,7 +1,45 @@
-/* Icons */
-import { icons } from '../theme/icons/tag';
+/* Core */
+import React, { useContext, useEffect } from 'react';
 
-export const Hero = () => {
+/* Components */
+import { Tag } from './';
+
+/* Other */
+import tags from '../mock-data/tags.json';
+import { getTagIcon } from '../helpers';
+import { Context } from '../lib/selectedTagContext';
+
+export const Hero: React.FC<PropTypes> = ({ tipViewMode }) => {
+    const [selectedTagId, setSelectedTagId] = useContext(Context);
+
+    useEffect(() => {
+        if (selectedTagId === null && tags !== null) {
+            setSelectedTagId(tags[0].id);
+        }
+    }, []);
+
+    const handleTagSelect = (id: string): void => {
+        setSelectedTagId(id);
+    };
+
+    const tagsJSX = tags.map((tag) => {
+        const TagIcon = getTagIcon(tag.name);
+
+        return (
+            <Tag
+                key={tag.id}
+                title={tag.name}
+                dataActive={
+                    tipViewMode === 'all-topics' ||
+                    selectedTagId === tag.id
+                }
+                handleTagSelect={handleTagSelect}
+                id={tag.id}>
+                <TagIcon />
+            </Tag>
+        )
+    });
+
     return (
         <section className='hero'>
             <div className='title'>
@@ -10,15 +48,12 @@ export const Hero = () => {
             </div>
 
             <div className='tags'>
-                {Object.entries(icons).map(([name, icon], index) => {
-                    const Icon = icon;
-                    return (
-                        <span key={index}>
-                            <Icon /> {name}
-                        </span>
-                    );
-                })}
+                {tagsJSX}
             </div>
         </section>
-    );
+    )
 };
+
+interface PropTypes {
+    tipViewMode: string
+}

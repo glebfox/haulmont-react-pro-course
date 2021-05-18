@@ -1,22 +1,33 @@
-import { FC } from 'react';
+/* Core */
+import { useContext } from 'react';
 
-import tips from '../../mock-data/tips.json';
+/* Data */
+import source from '../../mock-data/tips.json';
+
+/* Instruments */
 import { formatDate, getTagIcon } from '../../helpers';
-import { TipModel } from '../../types';
+import { Context } from '../../lib/selectedTagContext';
 
-export const TipList: FC = () => {
-    const tipsJSX = tips?.map((tip: TipModel) => {
+export const TipList: React.FC<PropTypes> = ({ tipViewMode }) => {
+    let tips = source;
+    const [selectedTagId] = useContext(Context);
+
+    if (tipViewMode === 'topic-by-tag') {
+        tips = source?.filter((tip) => tip.tag.id === selectedTagId);
+    }
+
+    const tipsJSX = tips?.map((tip) => {
         const TagIcon = getTagIcon(tip.tag.name);
 
         return (
             <article key={tip.id}>
                 <header>
-                    <TagIcon /> <h1>{tip.title}</h1>
+                    <TagIcon/> <h1>{tip.title}</h1>
                 </header>
 
                 <main>
                     <time>
-                        <TagIcon />
+                        <TagIcon/>
 
                         <div>
                             <span>🚀 {formatDate(tip.created)}</span>
@@ -35,5 +46,13 @@ export const TipList: FC = () => {
         );
     });
 
-    return <section className='tip-list'>{tipsJSX}</section>;
+    return (
+        <section className='tip-list'>
+            {tipsJSX}
+        </section>
+    );
 };
+
+interface PropTypes {
+    tipViewMode: string
+}

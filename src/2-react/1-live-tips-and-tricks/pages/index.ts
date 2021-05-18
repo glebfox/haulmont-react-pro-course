@@ -1,1 +1,2 @@
-export { HomePage } from './home';
+export { AllTopics } from './all-topics';
+export { TopicsByTag } from './topics-by-tag';
