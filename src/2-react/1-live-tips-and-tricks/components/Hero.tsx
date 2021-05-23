@@ -5,15 +5,17 @@ import React, { useContext, useEffect } from 'react';
 import { Tag } from './';
 
 /* Other */
-import tags from '../mock-data/tags.json';
+// import tags from '../mock-data/tags.json';
 import { getTagIcon } from '../helpers';
 import { Context } from '../lib/selectedTagContext';
+import { useTags } from '../hooks/useTags';
 
 export const Hero: React.FC<PropTypes> = ({ tipViewMode }) => {
     const [selectedTagId, setSelectedTagId] = useContext(Context);
+    const { data: tags, isFetching } = useTags();
 
     useEffect(() => {
-        if (selectedTagId === null && tags !== null) {
+        if (selectedTagId === null && tags !== null && Array.isArray(tags)) {
             setSelectedTagId(tags[0].id);
         }
     }, []);
@@ -22,7 +24,7 @@ export const Hero: React.FC<PropTypes> = ({ tipViewMode }) => {
         setSelectedTagId(id);
     };
 
-    const tagsJSX = tags.map((tag) => {
+    const tagsJSX = tags?.map((tag) => {
         const TagIcon = getTagIcon(tag.name);
 
         return (
@@ -48,7 +50,8 @@ export const Hero: React.FC<PropTypes> = ({ tipViewMode }) => {
             </div>
 
             <div className='tags'>
-                {tagsJSX}
+                {isFetching && <p>Загрузка...</p> }
+                {!isFetching && tagsJSX}
             </div>
         </section>
     )

@@ -13,7 +13,7 @@ import { Git } from './Git';
 import { Tools } from './Tools';
 import { MacOS } from './MacOS';
 
-enum TagEnum {
+export enum TagEnum {
     JAVASCRIPT = 'JavaScript',
     TYPESCRIPT = 'TypeScript',
     REACT = 'React',

@@ -6,7 +6,7 @@ export const Context = createContext<SelectedTagProvideShape>([
     () => null,
 ]);
 
-export const SelectedTagProvider: React.FC = props => {
+export const SelectedTagProvider: React.FC = (props) => {
     const state = useState<string | null>(null);
 
     return <Context.Provider value={state}>{props.children}</Context.Provider>;
