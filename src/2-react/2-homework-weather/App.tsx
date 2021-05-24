@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Day, DayShort } from './components';
-import { useWeather } from './hooks/useWeather';
+import { Day, Filter, Forecast } from './components';
+import { useFetchForecast } from './hooks/useFetchForecast';
 
 export const App = () => {
     const [selectedDayId, setSelectedDayId] = useState<string | null>(null);
-    const { data: forecast, isFetching } = useWeather(7);
+    const { data: forecast, isFetching } = useFetchForecast(7);
 
     useEffect(() => {
         if (selectedDayId === null && forecast !== null && Array.isArray(forecast)) {
@@ -17,60 +17,35 @@ export const App = () => {
     };
 
     const getSelectedDayJSX = () => {
-        const dayInfo = forecast?.find((dayInfo) => {
-            return dayInfo.id === selectedDayId;
+        const weatherInfo = forecast?.find((weatherInfo) => {
+            return weatherInfo.id === selectedDayId;
         });
 
-        if (dayInfo) {
+        if (weatherInfo) {
             return (
                 <Day
-                    rainProbability={dayInfo.rainProbability}
-                    humidity={dayInfo.humidity}
-                    date={dayInfo.day}
-                    temperature={dayInfo.temperature}
-                    type={dayInfo.type}
+                    rainProbability={weatherInfo.rain_probability}
+                    humidity={weatherInfo.humidity}
+                    date={weatherInfo.day}
+                    temperature={weatherInfo.temperature}
+                    type={weatherInfo.type}
                 />
             );
         }
+
         return null;
     };
 
-    const daysJSX = forecast?.map((dayInfo) => {
-        return (
-            <DayShort
-                key={dayInfo.id}
-                id={dayInfo.id}
-                date={dayInfo.day}
-                temperature={dayInfo.temperature}
-                type={dayInfo.type}
-                selected={dayInfo.id === selectedDayId}
-                handleDaySelect={handleDaySelect}
-            />
-        );
-    });
-
     return (
         <main>
-            <div className='filter'>
-                <span className='checkbox'>Облачно</span>
-                <span className='checkbox selected'>Солнечно</span>
-                <p className='custom-input'>
-                    <label htmlFor='min-temperature'>Минимальная температура</label>
-                    <input id='min-temperature' type='text' />
-                </p>
-                <p className='custom-input'>
-                    <label htmlFor='min-temperature'>Максимальная температура</label>
-                    <input id='max-temperature' type='text' />
-                </p>
-                <button>Отфильтровать</button>
-            </div>
+            <Filter />
 
             {getSelectedDayJSX()}
 
-            <div className='forecast'>
-                {isFetching && <p>Загрузка...</p>}
-                {!isFetching && daysJSX}
-            </div>
+            {isFetching && <p className='loading-indicator'>Загрузка...</p>}
+            {!isFetching && (
+                <Forecast forecast={forecast} selectedDayId={selectedDayId} handleDaySelect={handleDaySelect} />
+            )}
         </main>
     );
 };

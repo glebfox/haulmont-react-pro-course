@@ -1,6 +1,6 @@
 export interface WeatherModel {
     id: string,
-    rainProbability: number,
+    rain_probability: number,
     humidity: number,
     day: number,
     temperature: number,

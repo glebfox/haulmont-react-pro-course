@@ -2,16 +2,14 @@ import { api } from '../api';
 import { useQuery } from 'react-query';
 import { WeatherModel } from '../types/WeatherModel';
 
-export const useWeather = (limit: number = 0) => {
-    const query = useQuery<WeatherModel[]>(
+export const useFetchForecast = (limit: number = 0) => {
+    return useQuery<WeatherModel[]>(
         ['forecast', limit],
         async () => {
-            return api.getWeather(limit);
+            return api.getForecast(limit);
         },
         {
             cacheTime: 1000,
         },
     );
-
-    return query;
 };

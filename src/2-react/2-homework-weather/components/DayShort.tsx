@@ -14,7 +14,8 @@ export const DayShort: FC<DayShortProps> = (props) => {
     const { id, date, temperature, type, selected, handleDaySelect } = props;
 
     return (
-        <div className={`day ${type}${selected ? ' selected' : ''}`} onClick={() => handleDaySelect(id)}>
+        <div className={`day ${type}${selected ? ' selected' : ''}`}
+             onClick={() => handleDaySelect(id)}>
             <p>{formatDayName(date)}</p>
             <span>{temperature}</span>
         </div>

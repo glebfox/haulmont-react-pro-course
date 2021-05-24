@@ -19,6 +19,15 @@ main {
     margin: 0 auto;
 }
 
+.loading-indicator {
+    margin: 32px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: $color1;
+    text-align: center;
+}
+
 .head {
     display: flex;
     justify-content: center;
