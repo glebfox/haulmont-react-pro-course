@@ -1,30 +1,30 @@
-import forecast from './mock-data/forecast.json';
-import { useEffect, useState } from 'react';
-import Day from './components/Day';
-import DayFull from './components/DayFull';
+import React, { useEffect, useState } from 'react';
+import { Day, DayShort } from './components';
+import { useWeather } from './hooks/useWeather';
 
 export const App = () => {
     const [selectedDayId, setSelectedDayId] = useState<string | null>(null);
+    const { data: forecast, isFetching } = useWeather(7);
 
     useEffect(() => {
-        if (selectedDayId === null && forecast !== null) {
+        if (selectedDayId === null && forecast !== null && Array.isArray(forecast)) {
             setSelectedDayId(forecast[0].id);
         }
-    }, []);
+    }, [isFetching]);
 
     const handleDaySelect = (id: string): void => {
         setSelectedDayId(id);
     };
 
     const getSelectedDayJSX = () => {
-        const dayInfo = forecast.find((dayInfo) => {
+        const dayInfo = forecast?.find((dayInfo) => {
             return dayInfo.id === selectedDayId;
         });
 
         if (dayInfo) {
             return (
-                <DayFull
-                    rainProbability={dayInfo.rain_probability}
+                <Day
+                    rainProbability={dayInfo.rainProbability}
                     humidity={dayInfo.humidity}
                     date={dayInfo.day}
                     temperature={dayInfo.temperature}
@@ -35,9 +35,9 @@ export const App = () => {
         return null;
     };
 
-    const daysJSX = forecast.slice(0, 7).map((dayInfo) => {
+    const daysJSX = forecast?.map((dayInfo) => {
         return (
-            <Day
+            <DayShort
                 key={dayInfo.id}
                 id={dayInfo.id}
                 date={dayInfo.day}
@@ -67,7 +67,10 @@ export const App = () => {
 
             {getSelectedDayJSX()}
 
-            <div className='forecast'>{daysJSX}</div>
+            <div className='forecast'>
+                {isFetching && <p>Загрузка...</p>}
+                {!isFetching && daysJSX}
+            </div>
         </main>
     );
 };

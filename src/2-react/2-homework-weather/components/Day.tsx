@@ -1,24 +1,33 @@
 import React, { FC } from 'react';
-import { formatDayName } from '../helpers/formatDate';
+import { formatDate, formatDayName } from '../helpers/formatDate';
 
 interface DayProps {
-    id: string;
+    rainProbability: number;
+    humidity: number;
     date: number;
     temperature: number;
     type: string;
-    selected: boolean;
-    handleDaySelect: (id: string) => void;
 }
 
-const Day: FC<DayProps> = (props) => {
-    const { id, date, temperature, type, selected, handleDaySelect } = props;
-
+export const Day: FC<DayProps> = (props) => {
+    const { rainProbability, humidity, date, temperature, type } = props;
     return (
-        <div className={`day ${type}${selected ? ' selected' : ''}`} onClick={() => handleDaySelect(id)}>
-            <p>{formatDayName(date)}</p>
-            <span>{temperature}</span>
-        </div>
+        <>
+            <div className='head'>
+                <div className={`icon ${type}`} />
+                <div className='current-date'>
+                    <p>{formatDayName(date)}</p>
+                    <span>{formatDate(date)}</span>
+                </div>
+            </div>
+
+            <div className='current-weather'>
+                <p className='temperature'>{temperature}</p>
+                <p className='meta'>
+                    <span className='rainy'>{`%${rainProbability}`}</span>
+                    <span className='humidity'>{`%${humidity}`}</span>
+                </p>
+            </div>
+        </>
     );
 };
-
-export default Day;

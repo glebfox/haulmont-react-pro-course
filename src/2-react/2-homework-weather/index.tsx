@@ -6,5 +6,14 @@ import { App } from './App';
 
 /* Instruments */
 import './theme/index.scss';
+import { QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
+import { queryClient } from './lib/react-query';
 
-render(<App />, document.getElementById('root'));
+render(
+    <QueryClientProvider client={queryClient}>
+        <App />
+        <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>,
+    document.getElementById('root'),
+);
